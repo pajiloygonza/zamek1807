@@ -1,11 +1,11 @@
-document.querySelectorAll(".social-toggle").forEach(function (toggle) {
-  toggle.addEventListener("click", function (event) {
-    event.preventDefault();
-    event.stopPropagation();
+// document.querySelectorAll(".social-toggle").forEach(function (toggle) {
+//   toggle.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     event.stopPropagation();
 
-    this.classList.toggle("open");
-  });
-});
+//     this.classList.toggle("open");
+//   });
+// });
 
 document.addEventListener("DOMContentLoaded", function () {
   const headerBurger = document.querySelector(".header-burger");
@@ -244,17 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .addTo(map)
     .bindPopup("Gdańsk – Obszar do 25 km<br>Dojeżdżamy w 25 minut!");
 
-  // === SOPOT ===
-
-  // L.marker([54.352, 18.6466], { pane: "marker-top" }).addTo(map).bindPopup(`
-  //   <div style="font-size: 14px;">
-  //     <strong>ZAMEK Serwis PRO</strong><br>
-  //     ul. Główna 12, Gdańsk<br>
-  //     <span style="color: #f39c12;">★ ★ ★ ★ ★</span>
-
-  //   </div>
-  // `);
-
   L.circle([54.4417, 18.56], {
     radius: 1200,
     color: "#d2090a",
@@ -355,13 +344,90 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", () => {
       const item = btn.parentElement;
 
-      // закрыть все остальные открытые
       document.querySelectorAll(".faq-item").forEach((el) => {
         if (el !== item) el.classList.remove("active");
       });
 
-      // переключить текущий
       item.classList.toggle("active");
     });
   });
 });
+function initMap() {
+  const center = { lat: 54.352, lng: 18.646 }; // Гданьск
+
+  const map = new google.maps.Map(document.getElementById("maps"), {
+    zoom: 10,
+    center,
+    mapTypeId: "roadmap",
+  });
+
+  // 🔴 Круги в Гданьске
+  new google.maps.Circle({
+    strokeColor: "#8B0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.4,
+    map,
+    center: { lat: 54.352, lng: 18.646 },
+    radius: 3000,
+  });
+
+  new google.maps.Circle({
+    strokeColor: "#8B0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.4,
+    map,
+    center: { lat: 54.33, lng: 18.57 },
+    radius: 2500,
+  });
+
+  new google.maps.Circle({
+    strokeColor: "#8B0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.4,
+    map,
+    center: { lat: 54.35, lng: 18.69 },
+    radius: 2500,
+  });
+
+  // 🟠 Зона охвата вокруг Гданьска
+  new google.maps.Circle({
+    strokeColor: "#FFA500",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FFA500",
+    fillOpacity: 0.2,
+    map,
+    center: { lat: 54.352, lng: 18.646 },
+    radius: 10000,
+  });
+
+  // 🔴 Сопот
+  new google.maps.Circle({
+    strokeColor: "#8B0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.4,
+    map,
+    center: { lat: 54.4417, lng: 18.56 },
+    radius: 1800,
+  });
+
+  // 🔵 Внешний охват (как на скрине)
+  new google.maps.Circle({
+    strokeColor: "#000080",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#0000FF",
+    fillOpacity: 0.05,
+    map,
+    center: { lat: 54.37, lng: 18.6 },
+    radius: 21000,
+  });
+}

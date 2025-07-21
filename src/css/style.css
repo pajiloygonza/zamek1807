@@ -143,10 +143,14 @@ a {
 .social-menu a.social-toggle.open + a + a + a:hover {
   background-color: #d2090a;
 }
-
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .social-link-img {
-  width: 20px;
-  height: 48px;
+  width: 35px;
+  height: 35px;
 }
 
 .social-menu a:nth-child(2) .social-link-img {
@@ -453,7 +457,7 @@ a {
 .service-item p {
   font-size: 18px;
   font-family: "Fira Sans", sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   font-style: normal;
   line-height: 1.5;
 }
@@ -537,6 +541,9 @@ a {
   margin: 60px 0px;
   /* background: #eaeaea; */
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .gray_block {
   position: absolute;
@@ -2669,7 +2676,7 @@ a {
     width: 300px;
   }
   .car-section-card-wrap {
-    padding-top: 14px;
+    padding-top: 10px;
     padding-left: 10px;
   }
   .car-section-card img {
@@ -3829,4 +3836,14 @@ a {
 }
 .faq-item.active .faq-answer {
   display: block;
+}
+.map {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.container_islugi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
